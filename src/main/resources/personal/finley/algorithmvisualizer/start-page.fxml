@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="personal.finley.algorithmvisualizer.controller.StartPage">
+   <children>
+      <Text layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Java Algorithm Visualizer ">
+         <font>
+            <Font name="JetBrains Mono Regular" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an algorithm:">
+         <font>
+            <Font name="JetBrains Mono Regular" size="16.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="choiceBox" layoutX="14.0" layoutY="101.0" prefWidth="150.0" />
+      <Button fx:id="startButton" layoutX="178.0" layoutY="101.0" mnemonicParsing="false" onAction="#start" text="Select">
+         <font>
+            <Font name="JetBrains Mono Regular" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
