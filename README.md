@@ -1,25 +1,14 @@
-Building and Running the Application
-1. Clone the Repository
+# Java Algorithm Visualizer
 
-sh
+## Building and Running the Application
 
+### 1. Clone the Repository
+
+To get started, clone the repository using Git:
+
+```bash
 git clone https://github.com/FinleyNeilson/Java-Algorithm-Visualizer.git
 cd Java-Algorithm-Visualizer
-
-2. Build the Project
-
-sh
-
-./gradlew clean build
-./gradlew jlink
-
-3. Run the Application
-
-sh
-
-cd build/image/bin
-./app
-
 Java Algorithm Visualizer
 
 A versatile and interactive visualizer for sorting algorithms, implemented in Java using JavaFX. This project allows users to explore and understand various sorting algorithms through dynamic animations and intuitive graphical representations.
