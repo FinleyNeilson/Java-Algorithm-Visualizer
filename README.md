@@ -1,7 +1,6 @@
 # Java Algorithm Visualizer
 
 A versatile and interactive visualizer for sorting algorithms, implemented in Java using JavaFX. This project allows users to explore and understand various sorting algorithms through dynamic animations and intuitive graphical representations.
-Features
 
 Multiple Sorting Algorithms: Includes implementations for popular sorting algorithms like Bubble Sort and Selection Sort.
 Interactive Visualization: Real-time animations of sorting steps, showcasing how algorithms process and sort data.
@@ -33,6 +32,8 @@ Build the project using Gradle with the following commands:
 cd build/image/bin
 ./app
 ```
+### Some screenshots:
+
 <img width="997" alt="Screen Shot 2024-07-22 at 7 44 37 PM" src="https://github.com/user-attachments/assets/1595c029-dcdf-4505-a721-7a5d390b51de">
 <img width="997" alt="Screen Shot 2024-07-22 at 7 43 52 PM" src="https://github.com/user-attachments/assets/f4dd4553-436f-498a-aeae-a9daee6d2d84">
 <img width="997" alt="Screen Shot 2024-07-22 at 7 43 39 PM" src="https://github.com/user-attachments/assets/cba9a294-455a-485b-821a-fadea528a401">
