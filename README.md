@@ -1,22 +1,20 @@
 1. Clone the repository using Git:
 
-git clone https://github.com/FinleyNeilson/Java-Algorithm-Visualizer.git
+  git clone https://github.com/FinleyNeilson/Java-Algorithm-Visualizer.git
 
-cd Java-Algorithm-Visualizer
+  cd Java-Algorithm-Visualizer
 
 2. Build the Project
 
-./gradlew clean build
+  ./gradlew clean build
 
-./gradlew jlink
-
-
+  ./gradlew jlink
 
 4. Run the Application
 
-cd build/image/bin
+  cd build/image/bin
 
-./app
+  ./app
 
 Java Algorithm Visualizer
 
