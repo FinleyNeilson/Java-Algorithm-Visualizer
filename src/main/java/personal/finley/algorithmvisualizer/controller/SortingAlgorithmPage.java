@@ -2,8 +2,6 @@ package personal.finley.algorithmvisualizer.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,11 +39,11 @@ public class SortingAlgorithmPage implements Initializable {
 
     private int[] initData;
 
-    private Timeline timeline;
-    private boolean running;
-    private boolean sortingInitialized;
+    private Timeline timeline = new Timeline();
+    private boolean running = false;
+    private boolean sortingInitialized = false;
 
-    private double animationSpeed;
+    private double animationSpeed = 3.0;
 
     private static String selectedAlgorithm;
 
@@ -55,13 +53,8 @@ public class SortingAlgorithmPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Display algorithm name at the top of the program
         algorithmName.setText(selectedAlgorithm);
-        animationSpeed = speedSlider.getValue();
-        speedText.setText(String.format("%.1f", animationSpeed));
-        // Reset the animation
-        this.sortingInitialized = false;
-        this.timeline = new Timeline();
-        stopAnimation();
 
         // Initialize the pane width/height
         this.paneWidth = visualizationPane.getPrefWidth();
@@ -75,15 +68,14 @@ public class SortingAlgorithmPage implements Initializable {
         // Scale all heights in terms of the max item
         this.scalar = paneHeight / (Arrays.stream(initData).max().orElseThrow());
 
+        // Draw the random data with nothing highlighted
         drawRectangles(initData, new int[]{-1, 1000});
 
-        speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                animationSpeed = speedSlider.getValue();
-                speedText.setText(String.format("%.1f", animationSpeed));
-                timeline.setRate(animationSpeed / 10);
-            }
+        // Add the slider listener
+        speedSlider.valueProperty().addListener((observableValue, number, t1) -> {
+            animationSpeed = speedSlider.getValue();
+            speedText.setText(String.format("%.1f", animationSpeed));
+            timeline.setRate(animationSpeed / 10);
         });
     }
 
@@ -113,7 +105,7 @@ public class SortingAlgorithmPage implements Initializable {
         }
     }
 
-    public void initSortingAnimation() throws InterruptedException {
+    private SortingAlgorithm getSortingAlgorithm() {
         // Set as Bubble sort by default
         SortingAlgorithmType algorithmType = SortingAlgorithmType.BUBBLE_SORT;
         // Reformat the string for the enum
@@ -127,7 +119,11 @@ public class SortingAlgorithmPage implements Initializable {
         }
 
         // Create the algorithm
-        SortingAlgorithm algorithm = algorithmType.createAlgorithm(this.initData);
+        return algorithmType.createAlgorithm(this.initData);
+    }
+
+    private void initSortingAnimation() {
+        SortingAlgorithm algorithm = getSortingAlgorithm();
 
         List<int[]> steps = algorithm.getSteps();
         List<int[]> highlightedElements = algorithm.getHighlightedElements();
@@ -146,6 +142,18 @@ public class SortingAlgorithmPage implements Initializable {
         timeline.setRate(animationSpeed / 10);
     }
 
+    public void startButtonMethod() {
+        if (running) {
+            stopAnimation();
+        } else { // Else not running
+            if (!sortingInitialized){
+                sortingInitialized = true;
+                initSortingAnimation();
+            }
+            startAnimation();
+        }
+    }
+
     public void stopAnimation(){
         this.running = false;
         start.setText("Start");
@@ -156,18 +164,6 @@ public class SortingAlgorithmPage implements Initializable {
         this.running = true;
         start.setText("Stop");
         timeline.play();
-    }
-
-    public void startButtonMethod() throws InterruptedException {
-        if (running) {
-            stopAnimation();
-        } else {
-            if (!sortingInitialized){
-                sortingInitialized = true;
-                initSortingAnimation();
-            }
-            startAnimation();
-        }
     }
 
     public void backToMenu(ActionEvent event) throws IOException {
