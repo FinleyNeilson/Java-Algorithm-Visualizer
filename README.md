@@ -1,52 +1,22 @@
-Clone the repository using Git:
+1. Clone the repository using Git:
 
-sh
+git clone https://github.com/FinleyNeilson/Java-Algorithm-Visualizer.git
 
-git clone https://github.com/your-username/your-repository.git
+cd Java-Algorithm-Visualizer
 
-Replace https://github.com/your-username/your-repository.git with the URL of your GitHub repository.
-
-Navigate to the project directory:
-
-sh
-
-    cd your-repository
-
-    Replace your-repository with the name of your cloned repository directory.
-
-3. Build the Project
-
-    Clean and Build the project using the Gradle Wrapper:
-
-    sh
+2. Build the Project
 
 ./gradlew clean build
 
-This will clean the previous builds and compile your code.
+./gradlew jlink
 
-Create a Custom Runtime Image using the Gradle Wrapper:
 
-sh
-
-    ./gradlew jlink
-
-    This step generates a custom runtime image containing only the modules your application needs. The runtime image will be located in the build/image directory.
 
 4. Run the Application
 
-    Navigate to the build/image/bin directory where the custom runtime image is located:
-
-    sh
-
 cd build/image/bin
 
-Run the application using the generated runtime image:
-
-sh
-
 ./app
-
-This will start your application using the custom runtime image.
 
 Java Algorithm Visualizer
 
